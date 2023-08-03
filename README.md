@@ -5,11 +5,11 @@
 
 <h4>-Payload Parachute Test Platform (PPTP)</h4>
 
-An arduino based platform to test the sensors, motors, and algorithms required for the payload. This is the upper part of the payload designed to be a bolt on recovery system for the bottom experiment part of the payload. The PPTP should be about a 1U cubesat or smaller. This test platform will be 3D printed and likely use an Arduino Uno and a Proto-shield. While this won't meet competition standards it is important to ensure the circuits, sensors, and code work properly before sending boards to PCB manufacturers. To be completed before the end of August (hopefully fedex picks up the pace and ships the sensors soon). Should take 1 week to complete once components arrive (hopefully). I forgot to order the altimeter :(, I'll just amazon prime one once the rest arrives. \n
-Sensors ordered:
--SparkFun 9DoF IMU ICM-20948 (Magnetometer and accelerometer)
--SparkFun GPS SAM-M10Q (GPS)
--Adafruit BMP388 (Altimeter/Thermometer) (not yet ordered)
+An arduino based platform to test the sensors, motors, and algorithms required for the payload. This is the upper part of the payload designed to be a bolt on recovery system for the bottom experiment part of the payload. The PPTP should be about a 1U cubesat or smaller. This test platform will be 3D printed and likely use an Arduino Uno and a Proto-shield. While this won't meet competition standards it is important to ensure the circuits, sensors, and code work properly before sending boards to PCB manufacturers. To be completed before the end of August (hopefully fedex picks up the pace and ships the sensors soon). Should take 1 week to complete once components arrive (hopefully). I forgot to order the altimeter :(, I'll just amazon prime one once the rest arrives.  
+Sensors ordered:  
+-SparkFun 9DoF IMU ICM-20948 (Magnetometer and accelerometer)  
+-SparkFun GPS SAM-M10Q (GPS)  
+-Adafruit BMP388 (Altimeter/Thermometer) (not yet ordered)  
 
 <h4>-Payload Parachute Recovery System (PPRS) (I like acronyms sue me)</h4>
 
