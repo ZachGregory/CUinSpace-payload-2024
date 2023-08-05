@@ -18,7 +18,7 @@ This will be the continuation of the PPTP moving into the fall semester. We will
 
 <h4>-Payload Biological Experiment (PBE?)</h4>
 
-This will be designed and constructed simultaneously with the PPRS. It is the lower portion of the payload and contains the experiment. The current idea for the experiment is a RPi camera observing a cell culture through a microscope (I think) as the cells undergo the extreme G-forces of the rocket. The question remains of why we have the PPRS and are ejecting out of the rocket which we will need to explain to judges. Hopefully having everything assembled by around February/March.
+This will be designed and constructed simultaneously with the PPRS. It is the lower portion of the payload and contains the experiment. The current idea for the experiment is a RPi camera observing a cell culture through a microscope (I think) as the cells undergo the extreme G-forces of the rocket. The question remains of why we have the PPRS and are ejecting out of the rocket which we will need to explain to judges. Outer casing ands inner structure with the cells and microscope. Inner structure must not shake relative to itself. Inner structure should be insulated as much as possible to protect the cells. Hopefully having everything assembled by around February/March.
 
 
 
