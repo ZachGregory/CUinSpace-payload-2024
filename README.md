@@ -9,7 +9,7 @@ An arduino based platform to test the sensors, motors, and algorithms required f
 Sensors ordered:  
 -SparkFun 9DoF IMU ICM-20948 (Magnetometer and accelerometer)  
 -SparkFun GPS SAM-M10Q (GPS)  
--Adafruit BMP388 (Altimeter/Thermometer) (not yet ordered)  
+-Adafruit BMP388 (Altimeter/Thermometer) NOTE: Before test flights this should be calibrated with the local time/area sea level pressure for accurate altitudes.
 
 <h4>-Payload Parachute Recovery System (PPRS) (I like acronyms sue me)</h4>
 
