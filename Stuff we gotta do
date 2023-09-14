@@ -1,17 +1,19 @@
 Stuff we need people to do:
 
 Electronicss
-Connect all the sensors to thge arduinp, figure out how to use an i2c bus so that multiple sensors can use the same i2c port on the arduinpo( also a bit of programming).
-Connect up batteries somehow. (likely buck converter leading to servos and arduino independantly.
+Connect all the sensors to the arduinp, figure out how to use an i2c bus so that multiple sensors can use the same i2c port on the arduino ( also a bit of programming).
+Connect up batteries somehow. (likely buck converter leading to servos and arduino independantly. Might need voltage regulators?)
 Create a new wiring schematic that uses an arduino nano instead of the uno. 
 Create in altium as schematic to connerct all the sensors together with the new wiring and power management. 
 shielding for the magnetometor from the motors 
 
 Programming
-make all the sensors work at the sdame time in one program
+make all the sensors work at the same time in one program
 Make the sensors move the servos based on a gps target
 Create microgravity subroutines (wayyy later)
 
 Mechanical:
-Figure out a better way to move the strings (ptfe blocks?)
-Look inot better configurations for the eelectronics and motors
+Figure out a better way to direct the strings (ptfe blocks?)
+Look into better configurations for the eelectronics and motors to save space
+Vibration damping
+Camera locations
