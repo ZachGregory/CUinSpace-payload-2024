@@ -1,5 +1,5 @@
 # CUinSpace-payload-2024
-<h2>This is a repository for all code related to the 2023-2024 CUinSpace Payload. </h2>
+<h2>This is a repository for all code and plans related to the 2023-2024 CUinSpace Payload. </h2>
 
 <h3>Contents will include:</h3>
 
