@@ -10,7 +10,8 @@ Y4183 (Buck Converter) <br>
 MS24 (Servo) <br>
 Arduino Uno <br>
 
-![image](https://github.com/ZachGregory/CUinSpace-payload-2024/assets/123396117/22dfd20c-7791-4c78-a8ef-c7c6e9e6a99d)
+![image](https://github.com/ZachGregory/CUinSpace-payload-2024/assets/123396117/e02fb189-9f5c-4467-bd2e-2b5b17546c4b)
+
 
 Materials for learning arduino and the sensors:
 You'll want to first download the arduino IDE from here: https://www.arduino.cc/en/software
