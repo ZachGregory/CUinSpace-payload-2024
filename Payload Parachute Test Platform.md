@@ -9,3 +9,18 @@ TCA9548A (Multiplexer)                          https://a.co/d/ihOqFEC <br>
 Y4183 (Buck Converter) <br>
 MS24 (Servo) <br>
 Arduino Uno <br>
+
+![image](https://github.com/ZachGregory/CUinSpace-payload-2024/assets/123396117/22dfd20c-7791-4c78-a8ef-c7c6e9e6a99d)
+
+Materials for learning arduino and the sensors:
+You'll want to first download the arduino IDE from here: https://www.arduino.cc/en/software
+
+Start here to learn some basics of arduino. 
+For now try to output to the onboard led, start the serial connection and output something to it. Just play around with it and get a feel for the syntax. 
+Blink sample code:
+https://learn.adafruit.com/adafruit-arduino-lesson-1-blink/loading-the-blink-example
+
+Serial output sample code: https://www.arduino.cc/reference/en/language/functions/communication/serial/print/
+
+Since we are using multiple I2C sensors that may try to use the same I2C address we are using a multiplexer. It deals with assigning different addresses to each sensor and lets us swap between them easily. 
+https://electropeak.com/learn/connect-multiple-i2c-devices-to-arduino-using-i2c-multiplexer-tca9548a/
