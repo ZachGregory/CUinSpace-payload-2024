@@ -5,9 +5,9 @@
 
 <h4>-Payload Parachute Test Platform (PPTP)</h4>
 
-An arduino based platform to test the sensors, motors, and algorithms required for the payload. This is the upper part of the payload designed to be a bolt on recovery system for the bottom experiment part of the payload. The PPTP should be about a 1U cubesat or smaller. This test platform will be 3D printed and likely use an Arduino Uno and a Proto-shield. While this won't meet competition standards it is important to ensure the circuits, sensors, and code work properly before sending boards to PCB manufacturers. To be completed before the end of August (hopefully fedex picks up the pace and ships the sensors soon). Should take 1 week to complete once components arrive (hopefully). I forgot to order the altimeter :(, I'll just amazon prime one once the rest arrives.  
+An arduino based platform to test the sensors, motors, and algorithms required for the payload. This is the upper part of the payload designed to be a bolt on recovery system for the bottom experiment part of the payload. The PPTP should be about a 1U cubesat or smaller. This test platform will be 3D printed and likely use an Arduino Uno and a Proto-shield. While this won't meet competition standards it is important to ensure the circuits, sensors, and code work properly before sending boards to PCB manufacturers. To be completed before the PDR.  
 Sensors ordered:  
--SparkFun 9DoF IMU ICM-20948 (Magnetometer and accelerometer)  
+-SparkFun 9DoF IMU ICM-20948 (Magnetometer and accelerometer) (NOTE: magnetometer must be calibrated when any hardware changes are made or the payload is in a new environment.)
 -SparkFun GPS SAM-M10Q (GPS)  
 -Adafruit BMP388 (Altimeter/Thermometer) NOTE: Before test flights this should be calibrated with the local time/area sea level pressure for accurate altitudes.
 
