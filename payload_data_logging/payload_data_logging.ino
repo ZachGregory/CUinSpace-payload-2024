@@ -5,7 +5,7 @@
 #include <SparkFun_u-blox_GNSS_v3.h> //GPS Library
 #include <Adafruit_Sensor.h> //Altimeter Library
 #include "Adafruit_BMP3XX.h" //Also Altimeter Library
-#include <SparkFun_I2C_Mux_Arduino_Library.h> //Mux Library
+//#include <SparkFun_I2C_Mux_Arduino_Library.h> //Mux Library
 
 // The value of the last bit of the I2C address.
 // On the SparkFun 9DoF IMU breakout the default is 1, and when the ADR jumper is closed the value becomes 0
@@ -15,7 +15,7 @@
 //#define TIMEZONE (-7) //New Mexico
 
 File myFile;
-QWIICMUX myMux;
+//QWIICMUX myMux;
 SFE_UBLOX_GNSS myGNSS;
 ICM_20948_I2C myICM;
 Adafruit_BMP3XX bmp;
@@ -39,7 +39,7 @@ void setup()
   Wire.setClock(400000);
 
     //Initialize Mux
-  if (myMux.begin() == false)
+  /*if (myMux.begin() == false)
   {
     Serial.println("Mux not detected. Freezing...");
     while (1);
@@ -48,7 +48,7 @@ void setup()
   myMux.enablePort(5); //Alt=5
   myMux.enablePort(1); //GPS=1
   myMux.enablePort(7); //IMU=7
-
+*/
   //Initialize IMU
   bool initialized = false;
   while (!initialized)
