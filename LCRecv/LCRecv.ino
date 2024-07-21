@@ -1,6 +1,8 @@
 #include <SPI.h>
 #include <LoRa.h>
 
+int incoming = 0;
+
 void setup() {
   Serial.begin(115200);
   while (!Serial);
@@ -25,6 +27,23 @@ void loop() {
       myData += (char)LoRa.read();
     }
     Serial.println(myData);
+
+    // Send state
+    if (Serial.available() > 0){
+      incoming = Serial.read();
+      if (incoming == 102) { // 102 - f
+        //Serial.println("Opening Valve");
+        LoRa.beginPacket();
+        LoRa.print("f");
+        LoRa.endPacket();
+      }
+      if (incoming == 99) { // 99 - c
+        //Serial.println("Closing Valve");
+        LoRa.beginPacket();
+        LoRa.print("c");
+        LoRa.endPacket();
+      }
+    }
 
     // print RSSI of packet
     //Serial.print("' with RSSI ");

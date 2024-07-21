@@ -25,7 +25,7 @@ uint32_t runTime = millis();
 uint32_t txTime = millis();
 int incoming = 0;
 
-String serialData = "0";
+String dataString = "";
 
 File myFile;
 Adafruit_GPS GPS(&GPSSerial); //GPS Object
@@ -63,6 +63,9 @@ void setup() {
 
   Serial.begin(115200);
   delay(2000);
+
+  pinMode(LED_BUILTIN, OUTPUT);
+  digitalWrite(LED_BUILTIN, LOW);
 
   // LoRa setup
   if (!LoRa.begin(868E6)) {
@@ -131,22 +134,35 @@ void loop() {
     logData();
   }
 
-  // Send GPS Coords
+  // Send data
   if (txTime+1500 < millis()){
     LoRa.beginPacket();
-    LoRa.print(serialData);
+    LoRa.print(dataString);
     LoRa.endPacket();
     txTime = millis();
   }
 
-  if (Serial.available() > 0){
-    incoming = Serial.read();
-    if (incoming == 'f') {
-      Serial.println("Opening Valve");
+  // Receive LoRa
+  int packetSize = LoRa.parsePacket();
+  if (packetSize) {
+    // received a packet
+    // read packet
+    String myData = "";
+    while (LoRa.available()) {
+      //Serial.print((char)LoRa.read());
+      myData += (char)LoRa.read();
     }
-    if (incoming == 'c') {
-      Serial.println("Closing Valve");
+
+    if (myData == "f") {
+      digitalWrite(LED_BUILTIN, HIGH);
     }
+    if (myData == "c") {
+      digitalWrite(LED_BUILTIN, LOW);
+    }
+
+    // print RSSI of packet
+    //Serial.print("' with RSSI ");
+    //Serial.println(LoRa.packetRssi());
   }
   
   //Set confidence levels using log constrained between 0 and 1
@@ -215,7 +231,7 @@ void parseData(){
 
 void logData(){
   // Data Logging
-  String dataString = "";
+  dataString = "";
   dataString += millis();
   dataString += ", ";
   if (GPS.hour+TIMEZONE < 10 && GPS.hour+TIMEZONE > 0) { hour = String('0'); } else if (GPS.hour+TIMEZONE >= 0) {hour = String("");}
@@ -251,8 +267,6 @@ void logData(){
   // Display to serial
   //Serial.println("Time (ms) \tTime (hh:mm:ss) \tTemperature (C) Pressure (hPa) \tAltitude (m) \tLatitude \t\tLongitude \t\tAcc X (mg) \tAcc Y (mg) \tAcc Z (mg) \tGyr X (DPS) \tGyr Y (DPS) \tGyr Z (DPS) \tMag X (uT) \tMag Y (uT) \tMag Z (uT)");
   Serial.println(dataString);
-  serialData = dataString;
-
 
   // if the file is available, write to it:
   /*if (dataFile) {
