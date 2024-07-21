@@ -1,0 +1,235 @@
+<html>
+    <head>
+        <title>Ground Station Terminal</title>
+
+        <style>
+            body {
+                font-family: sans-serif; 
+            }
+            .dial {
+                position: relative;
+                margin: 20px;
+            }
+            .dialColor {
+                width:200px; 
+                height:100px; 
+                background: rgb(20,181,0); 
+                background: linear-gradient(90deg, rgba(20,181,0,1) 25%, rgba(249,230,53,1) 50%, rgba(255,0,0,1) 75%); 
+                border-radius: 100px 100px 0 0;
+                z-index: 1;
+                position: absolute;
+                top: 0;
+                left: 1;
+            }
+            .dialCenter {
+                width:150px;
+                height:75px;
+                background: white;
+                border-radius: 75px 75px 0 0;
+                z-index: 2;
+                position: absolute;
+                top: 25px;
+                left: 26px;
+            }
+            .dialHiderDiv {
+                width: 203px;
+                height: 201px;
+                position: absolute;
+                top: 0;
+                left: 0;
+                transition: 1.5s;
+                z-index: 3;
+            }
+            .dialHiderInvis {
+                width: 203px;
+                height: 100px;
+                position: absolute;
+                top: 0;
+                left: 0;
+                background: rgba(0,0,0,0);
+            }
+            .dialHider {
+                width: 203px; 
+                height: 101px;
+                background: rgba(255, 255, 255, 0.76);
+                border-radius: 0 0 100px 100px;
+                z-index: 2;
+                position: absolute;
+                top: 101px;
+                left: 0;
+            }
+            .dialText {
+                color: black;
+                font-size: 24px;
+                position: absolute;
+                top: 50px;
+                left: 55px;
+                z-index: 4;
+            }
+            #map {
+                width:500px;
+                height:500px;
+                position: relative;
+                top:200px;
+                background-color: aliceblue;
+                background-image: url('map-local.png');
+                background-size: 100% 100%;
+                border-style: solid;
+                border-width: 4px;
+                border-color: black;
+            }
+            #dot {
+                position:absolute;
+                left: 0;
+                top: 0;
+                width: 10px;
+                height: 10px;
+                border-radius: 5px;
+                background-color: rgb(255, 0, 0);
+            }
+            #altitude{
+                width: 100px;
+                height: 600px;
+                background-color: rgba(0, 255, 255, 0.199);
+                position:relative;
+                left: 600px;
+                top:-350px;
+                padding:10px;
+            }
+            td {
+                border-bottom: 2px solid;
+            }
+            #arrow{
+                width: 20px;
+                height: 20px;
+                rotate: 270deg;
+            }
+            #altitudeDisp {
+                position: absolute;
+                left: 40px;
+                top: 586px;
+                transition: 1.5s;
+            }
+            #altitudeText {
+                position:relative;
+                left: 30px;
+            }
+        </style>
+        <script>
+            async function sendData(event) {
+                event.preventDefault();
+                
+                const data = document.getElementById('data').value;
+    
+                const response = await fetch('/client-sent-events', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ data: data })
+                });
+    
+                const result = await response.json();
+                document.getElementById('response').innerText = result.message;
+            }
+        </script>
+    </head>
+
+
+
+    <body>
+        <form onsubmit="sendData(event)">
+            <label for="data">Data:</label>
+            <input type="text" id="data" name="data" required>
+            <button type="submit">Send</button>
+        </form>
+        <p id="response"></p>
+        <div id="updates"></div>
+
+        <div class="dial">
+            <div class="dialColor"></div>
+            <div class="dialCenter"></div>
+            <div class="dialText"> <b id="tempDial"></b> <b> °C</b></div>
+            <div class="dialHiderDiv" id="tempSpinny">
+                <div class="dialHiderInvis"></div>
+                <div class="dialHider"></div>
+            </div>
+        </div>
+
+        <div id="map">
+            <div id="dot">
+
+            </div>
+        </div>
+
+        <div id="altitude">
+            <div>35,000ft</div>
+            <table>
+                <colgroup>
+                    <col width="5%"><col width="5%">
+                    <col width="5%"><col width="5%">
+                    <col width="5%"><col width="5%">
+                    <col width="5%"><col width="5%">
+                    <col width="5%"><col width="5%">
+                    <col width="5%"><col width="5%">
+                    <col width="5%"><col width="5%">
+                    <col width="5%"><col width="5%">
+                    <col width="5%"><col width="5%">
+                    <col width="5%"><col width="5%">
+                </colgroup>
+                <script>
+                    for (let i = 0; i <= 100; i++){
+                        if (i % 100 == 0){
+                            document.write("<tr><td colspan=25></td></tr>");
+                        } else if (i % 50 == 0){
+                            document.write("<tr><td colspan=25></td></tr>");
+                        } else if (i % 10 == 0){
+                            document.write("<tr><td colspan=15></td></tr>");
+                        } else if (i % 5 == 0){
+                            document.write("<tr><td colspan=10></td></tr>");
+                        } else {
+                            document.write("<tr><td colspan=5></td></tr>");
+                        }
+                    }
+                </script>
+            </table>
+            <div>0ft ASL</div>
+            <div id="altitudeDisp">
+                <div id="arrow">
+                    <svg version="1.1" id="icons" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 128 128" style="enable-background:new 0 0 128 128" xml:space="preserve"><style>.st0,.st1{display:none;fill:#191919}.st1,.st3{fill-rule:evenodd;clip-rule:evenodd}.st3,.st4{display:inline;fill:#191919}</style><g id="row1"><path id="nav:2_3_" d="M64 1 17.9 127 64 99.8l46.1 27.2L64 1zm0 20.4 32.6 89.2L64 91.3V21.4z" style="fill:#191919"/></g></svg>
+                </div>
+                <div id="altitudeText"></div>
+            </div>
+        </div>
+    </body>
+
+
+    <script type="text/javascript">    
+
+        var serialData = '';
+
+        // Coordinates for the extent of the map image
+        const MAXLAT = 45.375000;
+        const MINLAT = 45.361389;
+        const MAXLONG = -75.700278;
+        const MINLONG = -75.720000;
+
+        var source = new EventSource('/server-sent-events');
+
+        source.addEventListener('message', function(e) {            
+            document.getElementById('updates').innerHTML = e.data;
+            serialData = e.data.split(',');
+            document.getElementById('tempDial').innerHTML = serialData[2];
+            document.getElementById('tempSpinny').style.rotate = String((Number(serialData[2])-100)*1.8)+ 'deg';
+            document.getElementById('altitudeText').innerHTML = String(Math.round(Number(serialData[4])*3.281)) + ' ft';
+            document.getElementById('altitudeDisp').style.transform = 'translate(0px,' + String(-1*Number(serialData[4])*0.0479) + 'px)'
+            //GPS dot location
+            if (serialData[5] != '0'){
+                document.getElementById('dot').style.top = String(500-((Number(serialData[5])-MINLAT)*500/(MAXLAT-MINLAT)))+ 'px';
+                document.getElementById('dot').style.left = String((Number(serialData[6])-MINLONG)*500/(MAXLONG-MINLONG))+ 'px';
+            }
+            
+        }, false)
+
+    </script>
+</html>

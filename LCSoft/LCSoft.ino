@@ -25,6 +25,8 @@ uint32_t runTime = millis();
 uint32_t txTime = millis();
 int incoming = 0;
 
+String serialData = "0";
+
 File myFile;
 Adafruit_GPS GPS(&GPSSerial); //GPS Object
 ICM_20948_I2C myIMU; //IMU Object
@@ -130,10 +132,9 @@ void loop() {
   }
 
   // Send GPS Coords
-  if (txTime+10000 < millis()){
+  if (txTime+1500 < millis()){
     LoRa.beginPacket();
-    LoRa.print(GPS.latitudeDegrees);
-    LoRa.print(GPS.longitudeDegrees);
+    LoRa.print(serialData);
     LoRa.endPacket();
     txTime = millis();
   }
@@ -248,8 +249,9 @@ void logData(){
 
 
   // Display to serial
-  Serial.println("Time (ms) \tTime (hh:mm:ss) \tTemperature (C) Pressure (hPa) \tAltitude (m) \tLatitude \t\tLongitude \t\tAcc X (mg) \tAcc Y (mg) \tAcc Z (mg) \tGyr X (DPS) \tGyr Y (DPS) \tGyr Z (DPS) \tMag X (uT) \tMag Y (uT) \tMag Z (uT)");
+  //Serial.println("Time (ms) \tTime (hh:mm:ss) \tTemperature (C) Pressure (hPa) \tAltitude (m) \tLatitude \t\tLongitude \t\tAcc X (mg) \tAcc Y (mg) \tAcc Z (mg) \tGyr X (DPS) \tGyr Y (DPS) \tGyr Z (DPS) \tMag X (uT) \tMag Y (uT) \tMag Z (uT)");
   Serial.println(dataString);
+  serialData = dataString;
 
 
   // if the file is available, write to it:
