@@ -23,6 +23,7 @@
 uint32_t timer = millis();
 uint32_t runTime = millis();
 uint32_t txTime = millis();
+int incoming = 0;
 
 File myFile;
 Adafruit_GPS GPS(&GPSSerial); //GPS Object
@@ -135,6 +136,16 @@ void loop() {
     LoRa.print(GPS.longitudeDegrees);
     LoRa.endPacket();
     txTime = millis();
+  }
+
+  if (Serial.available() > 0){
+    incoming = Serial.read();
+    if (incoming == 'f') {
+      Serial.println("Opening Valve");
+    }
+    if (incoming == 'c') {
+      Serial.println("Closing Valve");
+    }
   }
   
   //Set confidence levels using log constrained between 0 and 1
