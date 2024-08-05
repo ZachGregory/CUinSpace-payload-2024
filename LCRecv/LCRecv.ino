@@ -26,7 +26,7 @@ void loop() {
       //Serial.print((char)LoRa.read());
       myData += (char)LoRa.read();
     }
-    Serial.println(myData);
+    Serial.println(myData + ", " + LoRa.packetRssi());
 
     // Send state
     if (Serial.available() > 0){
@@ -45,8 +45,5 @@ void loop() {
       }
     }
 
-    // print RSSI of packet
-    //Serial.print("' with RSSI ");
-    //Serial.println(LoRa.packetRssi());
   }
 }
