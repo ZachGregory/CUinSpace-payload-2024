@@ -269,7 +269,7 @@ void logData(){
   Serial.println(dataString);
 
   // if the file is available, write to it:
-  /*if (dataFile) {
+  if (dataFile) {
     if (!headingWritten){
       dataFile.println("Time (ms), Time (hh:mm:ss), Temperature (C), Pressure (hPa), Altitude (m), Latitude, Longitude, Acc X (mg), Acc Y (mg), Acc Z (mg), Gyr X (DPS), Gyr Y (DPS), Gyr Z (DPS), Mag X (uT), Mag Y (uT), Mag Z (uT)");
       headingWritten = true;
@@ -277,12 +277,12 @@ void logData(){
     dataFile.println(dataString);
     dataFile.close();
     // print to the serial port too:
-    dataString.replace(", ", "\t\t");
-    Serial.println("Time (ms) \tTime (hh:mm:ss) \tTemperature (C) Pressure (hPa) \tAltitude (m) \tLatitude \t\tLongitude \t\tAcc X (mg) \tAcc Y (mg) \tAcc Z (mg) \tGyr X (DPS) \tGyr Y (DPS) \tGyr Z (DPS) \tMag X (uT) \tMag Y (uT) \tMag Z (uT)");
-    Serial.println(dataString);
+    //dataString.replace(", ", "\t\t");
+    //Serial.println("Time (ms) \tTime (hh:mm:ss) \tTemperature (C) Pressure (hPa) \tAltitude (m) \tLatitude \t\tLongitude \t\tAcc X (mg) \tAcc Y (mg) \tAcc Z (mg) \tGyr X (DPS) \tGyr Y (DPS) \tGyr Z (DPS) \tMag X (uT) \tMag Y (uT) \tMag Z (uT)");
+    //Serial.println(dataString);
   }
   // if the file isn't open, pop up an error:
   else {
     Serial.println("error opening datalog.csv");
-  }*/
+  }
 }
