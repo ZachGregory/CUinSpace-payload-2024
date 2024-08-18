@@ -9,7 +9,6 @@
 #include <Wire.h>
 #include <Adafruit_GPS.h>
 #include <ICM_20948.h>
-#include <Servo.h>
 #include <Adafruit_Sensor.h> //Altimeter Library
 #include "Adafruit_BMP3XX.h" //Also Altimeter Library
 
