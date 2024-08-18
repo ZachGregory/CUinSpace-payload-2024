@@ -252,6 +252,7 @@
         source.addEventListener('message', function(e) {            
             document.getElementById('updates').innerHTML = e.data;
             serialData = e.data.split(',');
+            log(serialData);
             document.getElementById('tempDial').innerHTML = serialData[2];
             document.getElementById('tempSpinny').style.rotate = String((Number(serialData[2])-100)*1.8)+ 'deg';
             document.getElementById('altitudeText').innerHTML = String(Math.round(Number(serialData[4])*3.281)) + ' ft';
