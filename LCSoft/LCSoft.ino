@@ -26,7 +26,7 @@ int incoming = 0;
 
 String dataString = "";
 
-File myFile;
+File dataFile;
 Adafruit_GPS GPS(&GPSSerial); //GPS Object
 ICM_20948_I2C myIMU; //IMU Object
 Adafruit_BMP3XX bmp; //Altimeter Object
@@ -260,7 +260,7 @@ void logData(){
 
   // open the file. note that only one file can be open at a time,
   // so you have to close this one before opening another.
-    //File dataFile = SD.open("datalog.csv", FILE_WRITE);
+  dataFile = SD.open("datalog.csv", FILE_WRITE);
 
 
   // Display to serial
