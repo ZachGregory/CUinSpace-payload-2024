@@ -6,7 +6,7 @@ const app = express();
 const port = 80;
 
 // Define serial port
-const sPort = new SerialPort({ path: 'COM3', baudRate: 115200 })
+const sPort = new SerialPort({ path: 'COM5', baudRate: 115200 })
 
 // Serial port parser
 const parser = new ReadlineParser();
